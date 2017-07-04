@@ -1,18 +1,8 @@
 (function () {
     var mr = 21;
-    var btns = document.querySelectorAll('.btn');
+    var btns = __('.btn');
 
     var curMode = 0;
-
-    window.addEventListener('load', function () {
-        document.body.className = 'show';
-        toHash();
-    });
-
-    document.addEventListener('selectstart', function (ev) {
-        ev.preventDefault();
-        return false;
-    });
 
     function toAm() {
         for (var i = 0; i < btns.length; i++) {
@@ -52,8 +42,6 @@
         }
     }
 
-    window.addEventListener('hashchange', toHash);
-
     function toHash() {
         document.body.className = 'show';
 
@@ -61,18 +49,47 @@
             btns[i].removeAttribute('style');
             btns[i].classList.remove('done');
         }
-        if (!location.hash) {
-            curMode = 0;
-            toAm();
-        }
+
         if (location.hash == '#userinfo') {
             curMode = 1;
             toUserinfo();
+        } else {
+            curMode = 0;
+            toAm();
         }
     }
 
     function toUserinfo() {
 
         document.body.classList.add('show-userinfo');
+    }
+
+
+    window.addEventListener('hashchange', toHash);
+
+    window.addEventListener('load', function () {
+        document.body.className = 'show';
+        toHash();
+    });
+
+    document.addEventListener('selectstart', function (ev) {
+        ev.preventDefault();
+        return false;
+    });
+
+    _('#openSaveUser').addEventListener('click', function () {
+        _('.save-user').classList.add('open');
+    });
+
+    _('.save-user .close').addEventListener('click', function () {
+        _('.save-user').classList.remove('open');
+    });
+
+    function _(a) {
+        return document.querySelector(a);
+    }
+
+    function __(a) {
+        return document.querySelectorAll(a);
     }
 })();

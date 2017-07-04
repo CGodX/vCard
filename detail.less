@@ -1,0 +1,56 @@
+@import "base.less";
+.rt-logo {
+    position: absolute;
+    top: -4rem;
+    right: -4rem;
+    .c {
+        height: 16rem;
+        width: 16rem;
+        border-radius: 50%;
+        background-color: @primary-color;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 0 50px 10px #1a2953;
+    }
+    .t {
+        height: 22rem;
+        width: 22rem;
+        background-image: url(assets/rt.gif);
+        background-size: cover;
+        position: absolute;
+        top: -3rem;
+        left: -3rem;
+        animation: rt-logo-t linear 35s infinite, rt-logo-t-op linear 3s infinite;
+    }
+    .logo {
+        height: 6rem;
+        width: 6rem;
+        background-image: url(assets/logo.gif);
+        background-size: cover;
+        position: absolute;
+        top: 6.5rem;
+        left: 3.5rem;
+        z-index: 3;
+    }
+}
+
+@keyframes rt-logo-t {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rt-logo-t-op {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
